@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { userController } from "../controllers/userController.js";
+import verifyMiddleware from "../middlewares/verifyMiddleware.js";
+import adminMiddleware from "../middlewares/adminMiddleware.js";
 
 export const userRoutes = () => {
   // Iniciamos Router de express
@@ -8,11 +10,13 @@ export const userRoutes = () => {
   const { newUser, getUsers, updateDataUser, loginUser, refreshToken } =
     userController();
   // Ruta para crear usuario
-  userRoute.route("/create").post(newUser);
+  userRoute.route("/create").post(verifyMiddleware, adminMiddleware, newUser);
   // Ruta para obtener usuarios
-  userRoute.route("/").get(getUsers);
+  userRoute.route("/").get(verifyMiddleware, adminMiddleware, getUsers);
   // Ruta para actualizar usuario
-  userRoute.route("/:id").patch(updateDataUser);
+  userRoute
+    .route("/:id")
+    .patch(verifyMiddleware, adminMiddleware, updateDataUser);
   // Ruta para iniciar sesión
   userRoute.route("/login").post(loginUser);
   // Ruta para refrescar token

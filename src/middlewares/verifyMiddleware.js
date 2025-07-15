@@ -1,4 +1,4 @@
-import HTTP_STATUS from "../helpers/httpstatus.js";
+import HTTP_STATUS from "../utils/httpStatus.js";
 import { verifyToken, extractToken } from "../utils/jwtUtils.js";
 
 const verifyMiddleware = async (req, res, next) => {
