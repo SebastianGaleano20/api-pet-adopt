@@ -8,7 +8,7 @@ Incluye autenticación con JWT (access y refresh tokens), validaciones con Joi, 
 ## 🚀 Instalación
 
 ```bash
-git clone https://github.com/tu-usuario/mascotas-poloit-backend.git
+git clone https://github.com/tu-usuario/api-pet-adopt.git
 cd mascotas-poloit-backend
 npm install
 ```

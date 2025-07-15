@@ -14,7 +14,13 @@ export const petModel = () => {
     try {
       const pets = await prisma.pet.findMany({
         include: {
-          user: true,
+          user: {
+            select: {
+              name: true,
+              email: true,
+              phone: true,
+            },
+          },
         },
       });
       return pets;
@@ -28,7 +34,13 @@ export const petModel = () => {
       const pet = await prisma.pet.findUnique({
         where: { id: parseInt(id) },
         include: {
-          user: true,
+          user: {
+            select: {
+              name: true,
+              email: true,
+              phone: true,
+            },
+          },
         },
       });
       return pet;
@@ -43,7 +55,13 @@ export const petModel = () => {
       const petFound = await prisma.pet.findUnique({
         where: { id: idNumber },
         include: {
-          user: true,
+          user: {
+            select: {
+              name: true,
+              email: true,
+              phone: true,
+            },
+          },
         },
       });
 
@@ -57,7 +75,13 @@ export const petModel = () => {
         where: { id: idNumber },
         data: safeData,
         include: {
-          user: true,
+          user: {
+            select: {
+              name: true,
+              email: true,
+              phone: true,
+            },
+          },
         },
       });
       return pet;
@@ -87,7 +111,13 @@ export const petModel = () => {
           userId: userIdNumber,
         },
         include: {
-          user: true,
+          user: {
+            select: {
+              name: true,
+              email: true,
+              phone: true,
+            },
+          },
         },
       });
       return pet;
