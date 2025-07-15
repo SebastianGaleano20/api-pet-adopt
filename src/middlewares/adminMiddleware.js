@@ -1,4 +1,4 @@
-import HTTP_STATUS from "../utils/httpStatus";
+import HTTP_STATUS from "../utils/httpStatus.js";
 const adminMiddleware = (req, res, next) => {
   if (!req.user) {
     return res
